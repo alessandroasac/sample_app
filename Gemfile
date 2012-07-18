@@ -26,6 +26,7 @@ group :test, :development do
   gem 'guard-rspec', '0.5.5'
   gem 'guard-spork', '0.3.2'
   gem 'spork', '0.9.0'
+	gem 'mysql2'
 end
 
 group :test do
