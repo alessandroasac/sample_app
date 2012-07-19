@@ -7,10 +7,6 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 
-group :development, :test do
-  gem 'sqlite3', '1.3.5'
-end
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -23,10 +19,13 @@ gem 'jquery-rails', '2.0.0'
 
 group :test, :development do
   gem 'rspec-rails', '2.10.0'
-  gem 'guard-rspec', '0.5.5'
-  gem 'guard-spork', '0.3.2'
+  gem 'guard-rspec'
+  gem 'guard-spork'
   gem 'spork', '0.9.0'
 	gem 'mysql2'
+	gem 'rb-inotify'
+	gem 'libnotify'
+	gem 'rb-readline'
 end
 
 group :test do
