@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+include UsersUtilities
+
 describe ApplicationHelper do
 
   describe "full_title" do
