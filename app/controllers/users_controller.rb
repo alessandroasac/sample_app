@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
 	before_filter :signed_in_user, only: [:edit, :update, :index]
+	before_filter :non_signed_in_user, only: [:new, :create]
 	before_filter :correct_user, only: [:edit, :update]
 	before_filter :admin_user, only: :destroy
 
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		User.find(params[:id]).destroy
+		@user.destroy
 		flash[:success] = "User destroyed."
 		redirect_to users_url
 	end
@@ -55,6 +56,10 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def non_signed_in_user
+		redirect_to(root_path, notice: "You're already signed in.'") if signed_in?
+	end
+
 	def correct_user
 		@user = User.find(params[:id])
 		redirect_to(root_path) unless current_user?(@user)
@@ -62,5 +67,8 @@ class UsersController < ApplicationController
 
 	def admin_user
 		redirect_to(root_path) unless current_user.admin?
+		# se comparasse somente os id's seria mais eficiente
+		@user = User.find(params[:id])
+		redirect_to(root_path, error: "You can't delete yourself.'") if current_user?(@user)
 	end
 end
