@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+include UsersUtilities
+
 describe "Static pages" do
 
   subject { page }
@@ -30,6 +32,10 @@ describe "Static pages" do
         user.feed.each do |item|
           page.should have_selector("li##{item.id}", text: item.content)
         end
+      end
+
+      it "should render user's micropost count" do
+        page.should have_selector("span", text: "#{user.microposts.count} microposts")
       end
     end
   end
