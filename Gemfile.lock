@@ -196,7 +196,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   guard-rspec
   guard-spork
-  jquery-rails (= 2.0.0)
+  jquery-rails
   libnotify
   mysql2
   pg (= 0.12.2)
